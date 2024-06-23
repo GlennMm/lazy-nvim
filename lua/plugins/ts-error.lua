@@ -1,4 +1,4 @@
-return { 
+return {
   'dmmulroy/ts-error-translator.nvim',
   lazy = false,
   config = function ()

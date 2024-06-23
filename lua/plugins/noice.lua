@@ -2,6 +2,7 @@ local M  = { -- lazy.nvim
   "folke/noice.nvim",
   lazy = false,
   opts = {
+    notify = { enabled = false },
     lsp = {
       signature = {
         enabled = false
