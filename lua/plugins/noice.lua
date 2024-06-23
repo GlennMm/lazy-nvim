@@ -26,4 +26,4 @@ local M  = { -- lazy.nvim
   },
 }
 
-return M 
+return M
