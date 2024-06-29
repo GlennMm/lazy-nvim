@@ -67,8 +67,8 @@ function M.setup()
     --   { desc = "Cheatsheet Floating window", noremap = true, silent = true })
     local wk = require("which-key")
     wk.register {
-      ["<leader>?"] = { "<cmd>Cheatsheet<cr>", "Neovim cheatsheet." },
-      ["<leader>??"] = { "<cmd>Cheatsheet!<cr>", "Neovim cheatsheet floating." }
+      ["<leader>??"] = { "<cmd>Cheatsheet<cr>", "Neovim cheatsheet." },
+      ["<leader>???"] = { "<cmd>Cheatsheet!<cr>", "Neovim cheatsheet floating." }
     }
   end
 end
