@@ -13,7 +13,7 @@ M.on_attach = function(client, bufnr)
   map("n", "K", vim.lsp.buf.hover, opts "hover information")
   map("n", "gi", vim.lsp.buf.implementation, opts "Go to implementation")
   map("n", "<leader>sh", vim.lsp.buf.signature_help, opts "Show signature help")
-  map("n", "<leader>ca", vim.lsp.buf.code_action, opts "Show code action")
+  -- map("n", "<leader>ca", vim.lsp.buf.code_action, opts "Show code action")
   map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts "Add workspace folder")
   map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts "Remove workspace folder")
 
@@ -27,7 +27,7 @@ M.on_attach = function(client, bufnr)
     vim.lsp.buf.rename()
   end, opts "Rename")
 
-  map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Code action")
+  -- map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Code action")
   map("n", "gr", vim.lsp.buf.references, opts "Show references")
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
@@ -76,8 +76,8 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 M.capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
+  dynamicRegistration = false,
+  lineFoldingOnly = true
 }
 M.defaults = function()
   local signs = {
@@ -127,9 +127,9 @@ M.defaults = function()
           enable = true,
           arrayIndex = 'Disable', -- "Enable" | "Auto" | "Disable"
           await = true,
-          paramName = 'Literal', -- "All" | "Literal" | "Disable"
+          paramName = 'Literal',  -- "All" | "Literal" | "Disable"
           paramType = true,
-          semicolon = 'All', -- "All" | "SameLine" | "Disable"
+          semicolon = 'All',      -- "All" | "SameLine" | "Disable"
           setType = false,
         },
         telemetry = {

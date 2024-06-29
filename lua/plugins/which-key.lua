@@ -7,9 +7,7 @@ return {
     wk.setup(opts)
     wk.register({
       ["<leader>"] = {
-        -- ? = { function ()
-        --
-        -- end , "Cheatsheet"},
+        ["?"] = { name = "Cheatsheet" },
         f = { name = "Telescope" },
         l = { name = "Lsp" },
         L = {
