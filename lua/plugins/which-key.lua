@@ -8,6 +8,8 @@ return {
     wk.register({
       ["<leader>"] = {
         ["?"] = { name = "Cheatsheet" },
+        a = { name = "Angular" },
+        n = { name = "Nx" },
         f = { name = "Telescope" },
         l = { name = "Lsp" },
         L = {
