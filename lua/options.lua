@@ -4,6 +4,7 @@ vim.g.maplocalleader = "\\" -- Same for `maplocalleader`
 local opt = vim.opt
 local o = vim.o
 local g = vim.g
+local wo = vim.wo
 
 -------------------------------------- globals -----------------------------------------
 -- g.toggle_theme_icon = "   "
@@ -51,7 +52,7 @@ o.undofile = true
 
 -- interval for writing swap file to disk, also used by gitsigns
 o.updatetime = 250
-
+wo.wrap = false
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append("<>[]hl")

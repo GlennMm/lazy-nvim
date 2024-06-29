@@ -2,8 +2,14 @@ local autocmd = vim.api.nvim_create_autocmd
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
-  callback = function()
-    vim.lsp.buf.format()
+  callback = function(args)
+    local fidget = require("fidget")
+    local success = vim.lsp.buf.format({ bufnr = args.buf })
+    if success == nil then
+      fidget.notify("File formatted 󰸞")
+    else
+      fidget.notify("File format failed", vim.log.levels.ERROR, { annote = "File format failed" })
+    end
   end,
 })
 
@@ -157,8 +163,6 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
       return
     end
     if luasnip.expand_or_jumpable() then
-      -- ask maintainer for option to make this silent
-      -- luasnip.unlink_current()
       vim.cmd [[silent! lua require("luasnip").unlink_current()]]
     end
   end,

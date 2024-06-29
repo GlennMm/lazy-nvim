@@ -61,8 +61,10 @@ function M.setup()
 
   local ok, _ = pcall(require, "cheatsheet")
   if ok then
-    map({ "n", "v", "x", "i" }, "<leader>?", "<cmd>:Cheatsheet<cr>",
-      { desc = "Cheatsheet", noremap = true, silent = true })
+    -- map({ "n", "v", "x" }, "<leader>?", "<cmd>:Cheatsheet<cr>",
+    --   { desc = "Cheatsheet", noremap = true, silent = true })
+    -- map({ "n", "v", "x" }, "<leader>??", "<cmd>:Cheatsheet!<cr>",
+    --   { desc = "Cheatsheet Floating window", noremap = true, silent = true })
     local wk = require("which-key")
     wk.register {
       ["<leader>?"] = { "<cmd>Cheatsheet<cr>", "Neovim cheatsheet." },
