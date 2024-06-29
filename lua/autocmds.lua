@@ -1,41 +1,26 @@
 local autocmd = vim.api.nvim_create_autocmd
 
-vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-    callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if client.server_capabilities.inlayHintProvider then
-            vim.lsp.inlay_hint.enable(true)
-        end
-        -- whatever other lsp config you want
-    end
-})
-
-vim.api.nvim_create_augroup("AutoFormat", {})
-autocmd({ "BufWritePost" }, {
+vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
-  group = "AutoFormat",
   callback = function()
-    -- auto format code
     vim.lsp.buf.format()
   end,
 })
 
-local lint_grp = vim.api.nvim_create_augroup("lint", { clear = true })
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  group = lint_grp,
-  callback = function()
-    require("lint").try_lint()
-  vim.lsp.buf.format()
-  end,
-})
-
--- dont list quickfix buffers
 autocmd("FileType", {
   pattern = "qf",
   callback = function()
     vim.opt_local.buflisted = false
   end,
+})
+
+local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+    require('go.format').goimports()
+  end,
+  group = format_sync_grp,
 })
 
 -- user event that loads after UIEnter + only if file buf is there
@@ -93,15 +78,6 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
   group = "lsp_diagnostics_hold",
 })
 
-local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-    require("go.format").gofmt()  -- gofmt only
-    require("go.format").goimports()  -- goimports + gofmt  
-  end,
-  group = format_sync_grp,
-})
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   callback = function()
     vim.cmd "set formatoptions-=cro"
@@ -187,9 +163,3 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
     end
   end,
 })
-
-
-
-
-
-

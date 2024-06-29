@@ -11,16 +11,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
-
-local wk = require "which-key"
-wk.register {
-  ["<leader>pi"] = { "<cmd>Lazy install<cr>", "Install" },
-  ["<leader>ps"] = { "<cmd>Lazy sync<cr>", "Sync" },
-  ["<leader>pS"] = { "<cmd>Lazy clear<cr>", "Status" },
-  ["<leader>pc"] = { "<cmd>Lazy clean<cr>", "Clean" },
-  ["<leader>pu"] = { "<cmd>Lazy update<cr>", "Update" },
-  ["<leader>pp"] = { "<cmd>Lazy profile<cr>", "Profile" },
-  ["<leader>pl"] = { "<cmd>Lazy log<cr>", "Log" },
-  ["<leader>pd"] = { "<cmd>Lazy debug<cr>", "Debug" },
-}
+local lazy = require("lazy")
+lazy.setup({
+  { import = "plugins" },
+  { import = "plugins.ui" },
+  { import = "plugins.cmp" },
+  { import = "plugins.features" },
+  { import = "plugins.lsp" },
+  { import = "plugins.dap" },
+  { import = "plugins.frameworks" },
+  { import = "plugins.misc" }
+}, { defaults = { lazy = true } })
