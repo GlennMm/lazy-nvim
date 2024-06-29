@@ -1,5 +1,6 @@
 return {
   "ahmedkhalf/project.nvim",
+  event = "VeryLazy",
   lazy = false,
   config = function()
     require("project_nvim").setup {
@@ -14,7 +15,6 @@ return {
       silent_chdir = true,
       scope_chdir = "global",
     }
-
   end,
   keys = {
     { "<leader>pp", ":lua require('telescope').extensions.projects.projects()<CR>", desc = "Projects" },

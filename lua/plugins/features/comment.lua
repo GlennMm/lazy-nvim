@@ -1,5 +1,6 @@
 return {
   "numToStr/Comment.nvim",
+  event = "VeryLazy",
   lazy = false,
   keys = {
     { "<leader>/", mode = "n",          desc = "comment toggle current line" },

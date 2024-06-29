@@ -1,9 +1,9 @@
-return { 
-  "echasnovski/mini.nvim", 
+return {
+  "echasnovski/mini.nvim",
+  event = "VeryLazy",
   lazy = false,
   version = "*",
   config = function()
-
     -- Examples:
     --  - va)  - [V]isually select [A]round [)]parenthen
     --  - yinq - [Y]ank [I]nside [N]ext [']quote

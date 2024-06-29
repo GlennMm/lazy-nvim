@@ -1,5 +1,7 @@
 return {
   "folke/todo-comments.nvim",
+  event = "VeryLazy",
+  dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
     keywords = {
       FIX = {
@@ -16,5 +18,25 @@ return {
       TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
     }
   },
-  config = true
+  config = function(_, opts)
+    local todo_comments = require("todo-comments")
+    todo_comments.setup(opts)
+    local wk = require("which-key")
+    wk.register {
+      ["<leader>Tn"] = { function() todo_comments.jump_next() end, "Next todo comment" },
+      ["<leader>Tp"] = { function() todo_comments.jump_prev() end, "Next todo comment" },
+      ["<leader>Tt"] = { function() todo_comments.jump_next({ keywords = { "ERROR", "WARNING", "FIX", "BUG" } }) end, "Next todo comment" },
+    }
+    vim.keymap.set("n", "]t", function()
+      todo_comments.jump_next()
+    end, { desc = "Next todo comment" })
+
+    vim.keymap.set("n", "[t", function()
+      todo_comments.jump_prev()
+    end, { desc = "Previous todo comment" })
+
+    vim.keymap.set("n", "]t", function()
+      todo_comments.jump_next({ keywords = { "ERROR", "WARNING" } })
+    end, { desc = "Next error/warning todo comment" })
+  end
 }

@@ -21,7 +21,8 @@ return {
         g = { name = "Git" },
         t = { name = "Terminal" },
         u = { name = "Utils" },
-        p = { name = "Projects" }
+        p = { name = "Projects" },
+        T = { name = "Todo" }
       },
     })
   end

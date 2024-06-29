@@ -22,5 +22,6 @@ return {
       view_history = "messages",   -- view for :messages
       view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
     },
+    -- TODO: asdfasdfas
   }
 }

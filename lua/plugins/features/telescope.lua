@@ -6,13 +6,13 @@ return {
     event = "VeryLazy",
     tag = '0.1.8',
     keys = {
-      { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>", desc = "Find files" },
-      { "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>", desc = "Grep" },
-      { "<leader>fr", "<cmd>lua require('telescope.builtin').old_files()<CR>", desc = "Recent files" },
-      { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", desc = "Buffers" },
-      { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>", desc = "Help tags" },
+      { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>",  desc = "Find files" },
+      { "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>",   desc = "Grep" },
+      { "<leader>fr", "<cmd>lua require('telescope.builtin').old_files()<CR>",   desc = "Recent files" },
+      { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>",     desc = "Buffers" },
+      { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>",   desc = "Help tags" },
       { "<leader>fw", "<cmd>lua require('telescope.builtin').grep_string()<CR>", desc = "Grep word" },
-      { "<leader>fc", "<cmd>lua require('telescope.builtin').commands()<CR>", desc = "Commands" },
+      { "<leader>fc", "<cmd>lua require('telescope.builtin').commands()<CR>",    desc = "Commands" },
     },
     opts = {
       defaults = {
@@ -24,7 +24,7 @@ return {
       },
       pickers = {
         find_files = { theme = "dropdown" },
-        live_grep= { theme = "dropdown" },
+        live_grep = { theme = "dropdown" },
         old_files = { theme = "dropdown" },
         buffers = { theme = "dropdown" },
 
@@ -90,15 +90,15 @@ return {
           -- Other telescope configuration options
         },
         fzf = {
-          fuzzy = true,                    -- false will only do exact matching
-          override_generic_sorter = true,  -- override the generic sorter
-          override_file_sorter = true,     -- override the file sorter
-          case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                           -- the default case_mode is "smart_case"
+          fuzzy = true,                   -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true,    -- override the file sorter
+          case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+          -- the default case_mode is "smart_case"
         }
       }
     },
-    config = function (_, opts)
+    config = function(_, opts)
       local telescope = require("telescope")
       telescope.setup(opts)
 
@@ -107,7 +107,6 @@ return {
       -- telescope.load_extension('zoxide')
       telescope.load_extension "lazy"
       telescope.load_extension('fzf')
-
     end,
   },
   {
@@ -142,8 +141,17 @@ return {
     end,
   },
   "nvim-telescope/telescope-dap.nvim",
-  "tsakirist/telescope-lazy.nvim",
-  "andrew-george/telescope-themes",
+  {
+    "tsakirist/telescope-lazy.nvim",
+    event = "VeryLazy",
+  },
+  {
+    "andrew-george/telescope-themes",
+    event = "VeryLazy",
+  },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-  "jvgrootveld/telescope-zoxide"
+  {
+    "jvgrootveld/telescope-zoxide",
+    event = "VeryLazy",
+  }
 }
