@@ -104,9 +104,10 @@ return {
 
       telescope.load_extension('themes')
       telescope.load_extension('dap')
-      -- telescope.load_extension('zoxide')
+      telescope.load_extension('zoxide')
       telescope.load_extension "lazy"
       telescope.load_extension('fzf')
+      -- telescope.load_extension("package")
     end,
   },
   {
