@@ -30,41 +30,35 @@ o.foldcolumn = '1' -- '0' is not bad
 o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
 o.foldlevelstart = 99
 o.foldenable = true
-
 o.ignorecase = true
 o.smartcase = true
 o.mouse = "a"
 
 -- Numbers
 o.number = true
-o.relativenumber = true
+o.relativenumber = false
 o.numberwidth = 2
 o.ruler = false
-
--- disable nvim intro
--- opt.shortmess:append("sI")
-
 o.signcolumn = "yes"
 o.splitbelow = true
 o.splitright = true
 o.timeoutlen = 400
 o.undofile = true
-
--- interval for writing swap file to disk, also used by gitsigns
 o.updatetime = 250
-wo.wrap = false
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
+o.laststatus = 0
+o.wrap = false
+o.virtualedit = "block"
+o.termguicolors = true
+
 opt.whichwrap:append("<>[]hl")
 
--- g.mapleader = " "
-o.laststatus = 0
 -- disable some default providers
 g["loaded_node_provider"] = 0
 g["loaded_python3_provider"] = 0
 g["loaded_perl_provider"] = 0
 g["loaded_ruby_provider"] = 0
 g.editorconfig = true
+
 -- add binaries installed by mason.nvim to path
 local is_windows = vim.fn.has("win32") ~= 0
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH

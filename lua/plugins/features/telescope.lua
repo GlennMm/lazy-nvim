@@ -8,7 +8,7 @@ return {
     keys = {
       { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>",  desc = "Find files" },
       { "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>",   desc = "Grep" },
-      { "<leader>fr", "<cmd>lua require('telescope.builtin').old_files()<CR>",   desc = "Recent files" },
+      { "<leader>fr", "<cmd>Telescope oldfiles<CR>",                             desc = "Recent files" },
       { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>",     desc = "Buffers" },
       { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>",   desc = "Help tags" },
       { "<leader>fw", "<cmd>lua require('telescope.builtin').grep_string()<CR>", desc = "Grep word" },

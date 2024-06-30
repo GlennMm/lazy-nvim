@@ -24,6 +24,7 @@ end
 function M.setup()
   local opts = { noremap = true, silent = true }
 
+  map("n", "<Esc>", "<cmd>:nohlsearch<cr>", opts)
   map("n", "<C-i>", "<C-i>", opts)
   map("n", "n", "nzz", opts)
   map("n", "N", "Nzz", opts)
@@ -50,7 +51,7 @@ function M.setup()
   map("v", "K", ":m '<-2<CR>gv=gv")
   map("v", "J", ":m '>+1<CR>gv=gv")
   map({ "i", "n" }, "<C-z>", "<Esc>:u<CR>", opts)
-  map({ "i", "n" }, "<C-v>", "<Esc>+p<CR>", opts)
+  -- map({ "i", "n" }, "<C-v>", "<Esc>+p<CR>", opts)
   map("n", "<leader>q", "<cmd>wqa<cr>", { desc = "Quit all" })
 
   map("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
