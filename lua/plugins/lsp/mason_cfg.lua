@@ -34,6 +34,9 @@ return {
         if server == "rust_analyzer" then
           return
         end
+        if server == "vtsls" then
+          return
+        end
 
         local lsp_cfg = require('plugins.lsp.config.lsp')
         local opt = {

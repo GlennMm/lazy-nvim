@@ -9,6 +9,8 @@ return {
       { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>",  desc = "Find files" },
       { "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>",   desc = "Grep" },
       { "<leader>fr", "<cmd>Telescope oldfiles<CR>",                             desc = "Recent files" },
+      { "<leader>ft", "<cmd>Telescope themes<CR>",                               desc = "Set themes." },
+      { "<leader>fq", "<cmd>Telescope quickfix<CR>",                             desc = "Quickfix list." },
       { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>",     desc = "Buffers" },
       { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>",   desc = "Help tags" },
       { "<leader>fw", "<cmd>lua require('telescope.builtin').grep_string()<CR>", desc = "Grep word" },
@@ -100,7 +102,22 @@ return {
     },
     config = function(_, opts)
       local telescope = require("telescope")
-      telescope.setup(opts)
+      local actions = require("telescope.actions")
+      local open_with_trouble = require("trouble.sources.telescope").open
+
+      -- Use this to add more results without clearing the trouble list
+      local add_to_trouble = require("trouble.sources.telescope").add
+
+      local opt = vim.tbl_deep_extend("force", opts, {
+        defaults = {
+          mappings = {
+            i = { ["<c-t>"] = open_with_trouble },
+            n = { ["<c-t>"] = open_with_trouble },
+          },
+        },
+      })
+
+      telescope.setup(opt)
 
       telescope.load_extension('themes')
       telescope.load_extension('dap')
@@ -139,6 +156,11 @@ return {
           ["<C-E>"] = ctactions.edit_user_cheatsheet,
         },
       })
+      local wk = require("which-key")
+      wk.register {
+        ["<leader>??"] = { "<cmd>Cheatsheet<cr>", "Neovim cheatsheet." },
+        ["<leader>???"] = { "<cmd>Cheatsheet!<cr>", "Neovim cheatsheet floating." }
+      }
     end,
   },
   "nvim-telescope/telescope-dap.nvim",

@@ -22,6 +22,7 @@ return {
         t = { name = "Terminal" },
         u = { name = "Utils" },
         p = { name = "Projects" },
+        x = { name = "Trouble" },
         T = { name = "Todo" }
       },
     })
