@@ -6,6 +6,7 @@ local options = {
     "gopls",
     "ruff",
     "angularls",
+    "pylsp"
   }, -- not an option from mason.nvim
 
   PATH = "skip",
