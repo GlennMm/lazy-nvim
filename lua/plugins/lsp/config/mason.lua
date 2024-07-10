@@ -1,7 +1,7 @@
 local options = {
   ensure_installed = {
     "lua_ls",
-    -- "stylua",
+    "intelephense",
     "vtsls",
     "gopls",
     "ruff",
