@@ -33,6 +33,6 @@ return {
     }
     local gitsigns = require("gitsigns")
     gitsigns.setup(opts)
-    vim.cmd [[Gitsigns toggle_current_line_blame]]
+    -- vim.cmd [[Gitsigns toggle_current_line_blame]]
   end,
 }

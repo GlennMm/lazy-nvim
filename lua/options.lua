@@ -3,6 +3,12 @@ local g = vim.g
 
 g.mapleader = " "       -- Make sure to set `mapleader` before lazy so your mappings are correct
 g.maplocalleader = "\\" -- Same for `maplocalleader`
+g["loaded_node_provider"] = 0
+g["loaded_python3_provider"] = 0
+g["loaded_perl_provider"] = 0
+g["loaded_ruby_provider"] = 0
+g.toggle_theme_icon = "   "
+g.editorconfig = true
 
 opt.showmode = false
 opt.autowriteall = true
@@ -41,11 +47,11 @@ opt.expandtab = true
 opt.whichwrap:append("<>[]hl")
 opt.cmdheight = 0
 
-g["loaded_node_provider"] = 0
-g["loaded_python3_provider"] = 0
-g["loaded_perl_provider"] = 0
-g["loaded_ruby_provider"] = 0
-g.toggle_theme_icon = "   "
-g.editorconfig = true
-
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
+
+-- Add http filetype
+vim.filetype.add({
+  extension = {
+    ['http'] = 'http',
+  },
+})
