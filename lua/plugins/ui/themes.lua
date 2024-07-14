@@ -11,19 +11,5 @@ return {
     config = function()
       require('onedark').setup()
     end
-  },
-  {
-    "catppuccin/nvim",
-    lazy = false,
-    name = "catppuccin",
-    priority = 1000
-  },
-  {
-    "oxfist/night-owl.nvim",
-    lazy = false,
-    priority = 1000
   }
-
-
-
 }
