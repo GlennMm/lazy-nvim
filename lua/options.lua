@@ -46,6 +46,10 @@ opt.termguicolors = true
 opt.expandtab = true
 opt.whichwrap:append("<>[]hl")
 opt.cmdheight = 0
+opt.scrolloff = 16
+opt.sidescrolloff = 16
+
+-- opt.scroll
 
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
 

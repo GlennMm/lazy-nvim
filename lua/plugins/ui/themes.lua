@@ -5,19 +5,22 @@ return {
     priority = 1000, -- make sure to load this before all the other start plugins
   },
   {
-    "rebelot/kanagawa.nvim",
-    lazy = false,
-    priority = 1000
-  },
-  {
-    "ellisonleao/gruvbox.nvim",
-    lazy = false,
-    priority = 1000
+
+    'ChristianChiarulli/onedark.nvim',
+    priority = 1000,
+    config = function()
+      require('onedark').setup()
+    end
   },
   {
     "catppuccin/nvim",
     lazy = false,
     name = "catppuccin",
+    priority = 1000
+  },
+  {
+    "oxfist/night-owl.nvim",
+    lazy = false,
     priority = 1000
   }
 
