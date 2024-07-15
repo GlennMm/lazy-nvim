@@ -1,3 +1,7 @@
+if true then
+  return {}
+end
+
 local M = {
   "RRethy/vim-illuminate",
   event = "VeryLazy",

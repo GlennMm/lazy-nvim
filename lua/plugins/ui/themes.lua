@@ -11,5 +11,28 @@ return {
     config = function()
       require('onedark').setup()
     end
+  },
+  {
+    "rafamadriz/neon",
+    priority = 1000,
+    config = function()
+      vim.g.neon_style = "doom"
+      vim.g.neon_italic_keyword = true
+      vim.g.neon_italic_function = true
+      vim.g.neon_italic_variable = false
+      vim.g.neon_italic_comment = true
+      vim.g.neon_italic_boolean = true
+      vim.g.neon_bold = true
+    end
+  },
+  {
+    "tiagovla/tokyodark.nvim",
+    opts = {
+      -- custom options here
+    },
+    config = function(_, opts)
+      require("tokyodark").setup(opts)   -- calling setup is optional
+      -- vim.cmd [[colorscheme tokyodark]]
+    end,
   }
 }

@@ -6,11 +6,12 @@ return {
   },
   otps = {
     options = {
+      theme = "neon",
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
     },
     sections = {
-      lualine_a = { { "mode", separator = { left = "" } } },
+      lualine_a = { { "mode", separator = { left = "" } }, 'swenv' },
       lualine_b = { "filename", "branch" },
       lualine_c = {
         "diagnostics",
@@ -18,6 +19,7 @@ return {
       lualine_x = {
         "copilot",
         "filetype",
+        { 'swenv', icon = '<icon>' }
       },
       lualine_y = { "progress" },
       lualine_z = {

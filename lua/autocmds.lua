@@ -1,13 +1,21 @@
 local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  group = vim.api.nvim_create_augroup('Yanking', { clear = true }),
+autocmd('TextYankPost', {
+  group = augroup('Yanking', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+autocmd("FileType", {
+  pattern = { "python" },
+  callback = function()
+    require('swenv.api').auto_venv()
+  end
+})
+
+autocmd("BufWritePre", {
   pattern = "*",
   callback = function(args)
     local fidget = require("fidget")
@@ -27,8 +35,8 @@ autocmd("FileType", {
   end,
 })
 
-local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
+local format_sync_grp = augroup("GoFormat", {})
+autocmd("BufWritePre", {
   pattern = "*.go",
   callback = function()
     require('go.format').goimports()
@@ -38,7 +46,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- user event that loads after UIEnter + only if file buf is there
 autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
-  group = vim.api.nvim_create_augroup("NvFilePost", { clear = true }),
+  group = augroup("NvFilePost", { clear = true }),
   callback = function(args)
     local file = vim.api.nvim_buf_get_name(args.buf)
     local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
@@ -84,20 +92,20 @@ function OpenDiagnosticIfNoFloat()
 end
 
 -- Show diagnostics under the cursor when holding position
-vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
-vim.api.nvim_create_autocmd({ "CursorHold" }, {
+augroup("lsp_diagnostics_hold", { clear = true })
+autocmd({ "CursorHold" }, {
   pattern = "*",
   command = "lua OpenDiagnosticIfNoFloat()",
   group = "lsp_diagnostics_hold",
 })
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+autocmd({ "BufWinEnter" }, {
   callback = function()
     vim.cmd "set formatoptions-=cro"
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
+autocmd({ "FileType" }, {
   pattern = {
     "netrw",
     "Jaq",
@@ -122,26 +130,26 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
+autocmd({ "CmdWinEnter" }, {
   callback = function()
     vim.cmd "quit"
   end,
 })
 
-vim.api.nvim_create_autocmd({ "VimResized" }, {
+autocmd({ "VimResized" }, {
   callback = function()
     vim.cmd "tabdo wincmd ="
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+autocmd({ "BufWinEnter" }, {
   pattern = { "*" },
   callback = function()
     vim.cmd "checktime"
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+autocmd({ "BufWinEnter" }, {
   pattern = { "*" },
   callback = function()
     local dirname = vim.fn.getcwd():match "([^/]+)$"
@@ -149,13 +157,13 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+autocmd({ "TextYankPost" }, {
   callback = function()
     vim.highlight.on_yank { higroup = "Visual", timeout = 40 }
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
+autocmd({ "FileType" }, {
   pattern = { "gitcommit", "markdown", "NeogitCommitMessage" },
   callback = function()
     vim.opt_local.wrap = true
@@ -163,7 +171,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "CursorHold" }, {
+autocmd({ "CursorHold" }, {
   callback = function()
     local status_ok, luasnip = pcall(require, "luasnip")
     if not status_ok then
