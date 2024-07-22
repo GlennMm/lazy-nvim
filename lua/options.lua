@@ -51,7 +51,7 @@ opt.sidescrolloff = 16
 
 -- opt.scroll
 
-vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (false and ";" or ":") .. vim.env.PATH
 
 -- Add http filetype
 vim.filetype.add({
