@@ -14,7 +14,7 @@ function M.config()
       keymap = {
         jump_next = "<c-j>",
         jump_prev = "<c-k>",
-        accept = "<c-l>",
+        accept = "<c-return>",
         refresh = "r",
         open = "<M-CR>",
       },

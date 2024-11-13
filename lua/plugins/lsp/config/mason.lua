@@ -7,7 +7,6 @@ local options = {
     "ruff",
     "angularls",
     "pylsp",
-    "delve"
   }, -- not an option from mason.nvim
 
   PATH = "skip",
