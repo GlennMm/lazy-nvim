@@ -1,5 +1,6 @@
 local opt = vim.opt
 local g = vim.g
+local o = vim.o
 
 g.mapleader = " "       -- Make sure to set `mapleader` before lazy so your mappings are correct
 g.maplocalleader = "\\" -- Same for `maplocalleader`
@@ -49,8 +50,12 @@ opt.cmdheight = 0
 opt.scrolloff = 16
 opt.sidescrolloff = 16
 
--- opt.scroll
+o.foldcolumn = '1' -- '0' is not bad
+o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+o.foldlevelstart = 99
+o.foldenable = true
 
+-- opt.scroll
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (false and ";" or ":") .. vim.env.PATH
 
 -- Add http filetype

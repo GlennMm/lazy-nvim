@@ -3,24 +3,16 @@ return {
   event = "VeryLazy",
   lazy = false,
   keys = {
-    { "<leader>/", mode = "n",          desc = "comment toggle current line" },
-    { "gcc",       mode = "n",          desc = "comment toggle current line" },
-    { "gc",        mode = { "n", "o" }, desc = "comment toggle linewise" },
-    { "<leader>/", mode = "x",          desc = "comment toggle linewise (visual)" },
-    { "gc",        mode = "x",          desc = "comment toggle linewise (visual)" },
-    { "gbc",       mode = "n",          desc = "comment toggle current block" },
-    { "gb",        mode = { "n", "o" }, desc = "comment toggle blockwise" },
-    { "gb",        mode = "x",          desc = "comment toggle blockwise (visual)" },
+    { "<leader>/", "<Plug>(comment_toggle_linewise_current)", mode = "n",                                desc = "comment toggle current line" },
+    { "gcc",       mode = "n",                                desc = "comment toggle current line" },
+    { "gc",        mode = { "n", "o" },                       desc = "comment toggle linewise" },
+    { "<leader>/", "<Plug>(comment_toggle_linewise_visual)",  mode = { "x", "v" },                       desc = "comment toggle linewise (visual)" },
+    { "gc",        mode = "x",                                desc = "comment toggle linewise (visual)" },
+    { "gbc",       mode = "n",                                desc = "comment toggle current block" },
+    { "gb",        mode = { "n", "o" },                       desc = "comment toggle blockwise" },
+    { "gb",        mode = "x",                                desc = "comment toggle blockwise (visual)" },
   },
   config = function()
-    local wk = require "which-key"
-    wk.register {
-      ["<leader>/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
-    }
-
-    wk.register {
-      ["<leader>/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment", mode = "v" },
-    }
     require("Comment").setup({
       ---Add a space b/w comment and the line
       padding = true,

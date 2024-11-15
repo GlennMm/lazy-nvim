@@ -6,15 +6,17 @@ return {
     event = "VeryLazy",
     tag = '0.1.8',
     keys = {
-      { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>",  desc = "Find files" },
-      { "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>",   desc = "Grep" },
-      { "<leader>fr", "<cmd>Telescope oldfiles<CR>",                             desc = "Recent files" },
-      { "<leader>ft", "<cmd>Telescope themes<CR>",                               desc = "Set themes." },
-      { "<leader>fq", "<cmd>Telescope quickfix<CR>",                             desc = "Quickfix list." },
-      { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>",     desc = "Buffers" },
-      { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>",   desc = "Help tags" },
-      { "<leader>fw", "<cmd>lua require('telescope.builtin').grep_string()<CR>", desc = "Grep word" },
-      { "<leader>fc", "<cmd>lua require('telescope.builtin').commands()<CR>",    desc = "Commands" },
+      { "<leader>ff",  "<cmd>lua require('telescope.builtin').find_files()<CR>",  desc = "Find files" },
+      { "<leader>fg",  "<cmd>lua require('telescope.builtin').live_grep()<CR>",   desc = "Grep" },
+      { "<leader>fr",  "<cmd>Telescope oldfiles<CR>",                             desc = "Recent files" },
+      { "<leader>ft",  "<cmd>Telescope themes<CR>",                               desc = "Set themes." },
+      { "<leader>fq",  "<cmd>Telescope quickfix<CR>",                             desc = "Quickfix list." },
+      { "<leader>fb",  "<cmd>lua require('telescope.builtin').buffers()<CR>",     desc = "Buffers" },
+      { "<leader>fh",  "<cmd>lua require('telescope.builtin').help_tags()<CR>",   desc = "Help tags" },
+      { "<leader>fw",  "<cmd>lua require('telescope.builtin').grep_string()<CR>", desc = "Grep word" },
+      { "<leader>fc",  "<cmd>lua require('telescope.builtin').commands()<CR>",    desc = "Commands" },
+      { "<leader>??",  "<cmd>Cheatsheet<cr>",                                     desc = "Neovim cheatsheet." },
+      { "<leader>???", "<cmd>Cheatsheet!<cr>",                                    desc = "Neovim cheatsheet floating." }
     },
     opts = {
       defaults = {
@@ -90,13 +92,13 @@ return {
           },
           -- Other telescope configuration options
         },
---         fzf = {
---           fuzzy = true,                   -- false will only do exact matching
---           override_generic_sorter = true, -- override the generic sorter
---           override_file_sorter = true,    -- override the file sorter
---           case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
---           -- the default case_mode is "smart_case"
---         }
+        --         fzf = {
+        --           fuzzy = true,                   -- false will only do exact matching
+        --           override_generic_sorter = true, -- override the generic sorter
+        --           override_file_sorter = true,    -- override the file sorter
+        --           case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+        --           -- the default case_mode is "smart_case"
+        --         }
       }
     },
     config = function(_, opts)
@@ -122,7 +124,7 @@ return {
       telescope.load_extension('dap')
       telescope.load_extension('zoxide')
       telescope.load_extension "lazy"
---       telescope.load_extension('fzf')
+      --       telescope.load_extension('fzf')
       -- telescope.load_extension("lazy_plugins")
       -- telescope.load_extension("package")
     end,
@@ -156,11 +158,6 @@ return {
           ["<C-E>"] = ctactions.edit_user_cheatsheet,
         },
       })
-      local wk = require("which-key")
-      wk.register {
-        ["<leader>??"] = { "<cmd>Cheatsheet<cr>", "Neovim cheatsheet." },
-        ["<leader>???"] = { "<cmd>Cheatsheet!<cr>", "Neovim cheatsheet floating." }
-      }
     end,
   },
   "nvim-telescope/telescope-dap.nvim",

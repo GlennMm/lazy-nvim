@@ -18,15 +18,14 @@ return {
       TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
     }
   },
+  keys = {
+    { "<leader>Tn", "<cmd>lua require('todo-comments').jump_next()<cr>",                                                    desc = "Next todo comment" },
+    { "<leader>Tp", "<cmd>lua require('todo-comments').jump_prev()<cr>",                                                    desc = "Previous todo comment" },
+    { "<leader>Tt", "<cmd>lua require('todo-comments').jump_next({ keywords = { 'ERROR', 'WARNING', 'FIX', 'BUG' } })<cr>", desc = "Attention required comment" },
+  },
   config = function(_, opts)
     local todo_comments = require("todo-comments")
     todo_comments.setup(opts)
-    local wk = require("which-key")
-    wk.register {
-      ["<leader>Tn"] = { function() todo_comments.jump_next() end, "Next todo comment" },
-      ["<leader>Tp"] = { function() todo_comments.jump_prev() end, "Previus todo comment" },
-      ["<leader>Tt"] = { function() todo_comments.jump_next({ keywords = { "ERROR", "WARNING", "FIX", "BUG" } }) end, "Attention required comment" },
-    }
     vim.keymap.set("n", "]t", function()
       todo_comments.jump_next()
     end, { desc = "Next todo comment" })

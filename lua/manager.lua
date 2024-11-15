@@ -20,6 +20,6 @@ lazy.setup({
   { import = "plugins.lsp" },
   { import = "plugins.dap" },
   { import = "plugins.test" },
-  { import = "plugins.frameworks" },
+  { import = "plugins.languages" },
   { import = "plugins.misc" }
 }, { defaults = { lazy = true } })

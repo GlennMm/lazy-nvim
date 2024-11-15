@@ -92,12 +92,12 @@ function OpenDiagnosticIfNoFloat()
 end
 
 -- Show diagnostics under the cursor when holding position
-augroup("lsp_diagnostics_hold", { clear = true })
-autocmd({ "CursorHold" }, {
-  pattern = "*",
-  command = "lua OpenDiagnosticIfNoFloat()",
-  group = "lsp_diagnostics_hold",
-})
+-- augroup("lsp_diagnostics_hold", { clear = true })
+-- autocmd({ "CursorHold" }, {
+--   pattern = "*",
+--   command = "lua OpenDiagnosticIfNoFloat()",
+--   group = "lsp_diagnostics_hold",
+-- })
 
 autocmd({ "BufWinEnter" }, {
   callback = function()

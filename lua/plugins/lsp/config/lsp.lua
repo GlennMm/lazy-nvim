@@ -32,7 +32,7 @@ M.on_attach = function(client, bufnr)
     update_in_insert = false,
     severity_sort = false,
   })
-  -- navic.attach(client, bufnr)
+  navic.attach(client, bufnr)
 end
 
 -- disable semanticTokens

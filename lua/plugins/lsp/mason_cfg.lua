@@ -8,12 +8,17 @@ return {
   opts = function()
     return require "plugins.lsp.config.mason"
   end,
+  keys = {
+    {
+      "<leader>lI",
+      function()
+        vim.cmd("Mason")
+      end,
+      mode = { "n", "x" },
+      desc = " mason info",
+    },
+  },
   config = function(_, opts)
-    local wk = require "which-key"
-    wk.register {
-      ["<leader>lI"] = { "<cmd>Mason<cr>", "Mason Info" },
-    }
-
     local lspconfig = require("lspconfig")
     require("mason").setup(opts)
     require("mason-lspconfig").setup({
