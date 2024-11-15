@@ -34,5 +34,13 @@ return {
       require("tokyodark").setup(opts) -- calling setup is optional
       -- vim.cmd [[colorscheme tokyodark]]
     end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      require("catppuccin").setup()
+    end
   }
 }

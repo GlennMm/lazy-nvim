@@ -19,7 +19,7 @@ return {
         local gitui = require("FTerm"):new({ cmd = "lazygit", border = "single", dimensions = { height = 0.8, width = 0.8 } })
         gitui:toggle()
       end,
-      desc = "GitUI"
+      desc = "Lazy Git"
     },
     {
       "<leader>tb",
@@ -29,5 +29,13 @@ return {
       end,
       desc = "BTop"
     },
+    {
+      "<leader>td",
+      function()
+        local btop = require("FTerm"):new({ cmd = "lazydocker", border = "single", dimensions = { height = 0.8, width = 0.8 } })
+        btop:toggle()
+      end,
+      desc = "Lazy Docker"
+    }
   }
 }
